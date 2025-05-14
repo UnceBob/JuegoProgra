@@ -11,13 +11,13 @@ public class ClickMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        EnemyMove.protawin = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        EnemyMove.protawin = false;
+       
 
         if (Input.GetKey(KeyCode.Mouse0))
         {
