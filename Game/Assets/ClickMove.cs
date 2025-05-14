@@ -5,6 +5,7 @@ using UnityEngine;
 public class ClickMove : MonoBehaviour
 {
     public int speed;
+    
    
     
     // Start is called before the first frame update
@@ -16,30 +17,18 @@ public class ClickMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        EnemyMove.protawin = false;
+
         if (Input.GetKey(KeyCode.Mouse0))
         {
             transform.position = new Vector3(0, 0, 0);
-            
+           EnemyMove.protawin = true;
         }
-        if (Input.GetKey(KeyCode.D))
+
+        if (EnemyMove.protawin == true)
         {
-            transform.Translate(Vector3.right * speed * Time.deltaTime);
-            print("GetKey");
+           
         }
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.Translate(Vector3.up * speed * Time.deltaTime);
-            print("GetKey");
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.Translate(Vector3.left * speed * Time.deltaTime);
-            print("GetKey");
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.Translate(Vector3.down * speed * Time.deltaTime);
-            print("GetKey");
-        }
+
     }
 }
