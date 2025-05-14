@@ -70,6 +70,8 @@ public class EnemyMove : MonoBehaviour
             }
 
 
+
+
         }
            if(winwindow == true && protawin == true)
             {
