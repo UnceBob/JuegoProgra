@@ -29,6 +29,7 @@ public class EnemyMove : MonoBehaviour
     {
         timer = Random.Range(2f, 5f);
         drawtime = 1f;
+        enemywin = false;
     }
 
     // Update is called once per frame
