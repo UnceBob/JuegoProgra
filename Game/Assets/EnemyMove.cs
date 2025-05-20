@@ -19,6 +19,7 @@ public class EnemyMove : MonoBehaviour
     private bool timerunning = true;
     public GameObject signal;
     public GameObject ButtonNextLevel;
+    public GameObject ButtonRetryLevel;
     public TMP_Text contadordeframes;
 
     bool duelActive;
@@ -81,7 +82,7 @@ public class EnemyMove : MonoBehaviour
             {
                 print("YOU LOSE");
                 winwindow = false;
-            ButtonNextLevel.SetActive(true);
+            ButtonRetryLevel.SetActive(true);
 
         }
 
