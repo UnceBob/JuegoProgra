@@ -82,6 +82,7 @@ public class EnemyMove : MonoBehaviour
                 print("YOU LOSE");
                 winwindow = false;
             ButtonNextLevel.SetActive(true);
+
         }
 
            if(winwindow == true && protawin == true)
