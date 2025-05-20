@@ -4,6 +4,8 @@ using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.WSA;
+using UnityEngine.UI;
+using TMPro;
 
 public class EnemyMove : MonoBehaviour
 {
@@ -15,7 +17,9 @@ public class EnemyMove : MonoBehaviour
     public float drawtime;
     private bool drawtimerunning;
     private bool timerunning = true;
-    
+    public GameObject signal;
+    public GameObject ButtonNextLevel;
+    public TMP_Text contadordeframes;
 
     bool duelActive;
 
@@ -42,6 +46,7 @@ public class EnemyMove : MonoBehaviour
             timer = 0;
             timerunning = false;
             transform.position = new Vector3(4, 1, 0);
+            signal.SetActive(true);
         }
         if (timerunning == false)
         {
@@ -63,29 +68,33 @@ public class EnemyMove : MonoBehaviour
             drawtime = 0;
             drawtimerunning = false;
             transform.position = new Vector3(0, 0, 0);
+            
+        }
 
-           if (drawtimerunning == false && protawin == false)
+          
+        if (drawtimerunning == false && protawin == false)
             {
                 enemywin = true;
-            }
-
-
-
-
+            } 
+        
+        if (enemywin == true)
+            {
+                print("YOU LOSE");
+                winwindow = false;
+            ButtonNextLevel.SetActive(true);
         }
+
            if(winwindow == true && protawin == true)
             {
                 enemywin = false;
-                print("Ganaste pendejo");
-            }
-             if (enemywin == true)
-            {
-                print("gano el malo");
-                winwindow = false;
+                print("YOU WIN");
+            ButtonNextLevel.SetActive(true);
             }
 
-       
-        
+        contadordeframes.text = drawtime.ToString("F2");
+
+
+
     }
 
 }

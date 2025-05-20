@@ -25,9 +25,10 @@ public class ClickMove : MonoBehaviour
            EnemyMove.protawin = true;
         }
 
-        if (EnemyMove.protawin == true)
+        if (EnemyMove.protawin == true && EnemyMove.winwindow == false)
         {
-           
+            EnemyMove.protawin = false;
+            print("TOO SOON");
         }
 
     }
