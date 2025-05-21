@@ -20,7 +20,8 @@ public class EnemyMove : MonoBehaviour
     public GameObject signal;
     public GameObject ButtonNextLevel;
     public GameObject ButtonRetryLevel;
-    
+    public GameObject fadein;
+    public GameObject fadeout;
     public TMP_Text contadordeframes;
     public float timerdelbotonfinal;
 
@@ -33,7 +34,8 @@ public class EnemyMove : MonoBehaviour
         drawtime = 1f;
         enemywin = false;
         timerdelbotonfinal = 3f;
-       
+        fadein.SetActive(true);
+
     }
 
     // Update is called once per frame
