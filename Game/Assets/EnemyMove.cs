@@ -20,7 +20,9 @@ public class EnemyMove : MonoBehaviour
     public GameObject signal;
     public GameObject ButtonNextLevel;
     public GameObject ButtonRetryLevel;
+    
     public TMP_Text contadordeframes;
+    public float timerdelbotonfinal;
 
     bool duelActive;
 
@@ -30,6 +32,8 @@ public class EnemyMove : MonoBehaviour
         timer = Random.Range(2f, 5f);
         drawtime = 1f;
         enemywin = false;
+        timerdelbotonfinal = 3f;
+       
     }
 
     // Update is called once per frame
@@ -80,10 +84,15 @@ public class EnemyMove : MonoBehaviour
             } 
         
         if (enemywin == true)
-            {
+        {
                 print("YOU LOSE");
                 winwindow = false;
+
+            timerdelbotonfinal -= Time.deltaTime;
+            if (timerdelbotonfinal < 0)
+            {
             ButtonRetryLevel.SetActive(true);
+            }
 
         }
 
@@ -91,7 +100,11 @@ public class EnemyMove : MonoBehaviour
             {
                 enemywin = false;
                 print("YOU WIN");
-            ButtonNextLevel.SetActive(true);
+            timerdelbotonfinal -= Time.deltaTime;
+            if (timerdelbotonfinal < 0)
+            {
+                ButtonNextLevel.SetActive(true);
+            }
             }
 
         contadordeframes.text = drawtime.ToString("F2");
