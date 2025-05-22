@@ -20,7 +20,7 @@ public class ClickMove : MonoBehaviour
     {
        
 
-        if (Input.GetKey(KeyCode.Space) && EnemyMove.winwindow == true)
+        if (Input.GetKey(KeyCode.Space))
         {
             transform.position = new Vector3(0, -3, 0);
             EnemyMove.protaclick = true;
