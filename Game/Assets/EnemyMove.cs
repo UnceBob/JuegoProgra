@@ -6,11 +6,12 @@ using UnityEngine;
 using UnityEngine.WSA;
 using UnityEngine.UI;
 using TMPro;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 public class EnemyMove : MonoBehaviour
 {
 
-   public static bool protawin;
+   public static bool protaclick;
    public static bool enemywin;
     public static bool winwindow;
     public float timer;
@@ -31,19 +32,16 @@ public class EnemyMove : MonoBehaviour
     void Start()
     {
         timer = Random.Range(2f, 5f);
-        drawtime = 1f;
         enemywin = false;
-        timerdelbotonfinal = 3f;
+        
         fadein.SetActive(true);
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (enemywin == false && protawin == false)
-        {
-        }
+        
         if (timer > 0)
         {
             timer -= Time.deltaTime;
@@ -51,18 +49,26 @@ public class EnemyMove : MonoBehaviour
         }
         else
         {
-            timer = 0;
+           
             timerunning = false;
-            transform.position = new Vector3(4, 1, 0);
+            transform.localScale = new Vector3(3,3,3);
             signal.SetActive(true);
         }
+        if (protaclick == true && winwindow == false)
+        {
+            print("TOO SOON");
+            protaclick = false;
+            
+        }
+
         if (timerunning == false)
         {
             draw();
         }
 
+
     }
-        void draw()
+        public void  draw()
     {
         drawtimerunning = true;
         if (drawtime > 0)
@@ -75,12 +81,12 @@ public class EnemyMove : MonoBehaviour
         {
             drawtime = 0;
             drawtimerunning = false;
-            transform.position = new Vector3(0, 0, 0);
+           
             
         }
 
           
-        if (drawtimerunning == false && protawin == false)
+        if (drawtimerunning == false && protaclick == false)
             {
                 enemywin = true;
             } 
@@ -95,24 +101,27 @@ public class EnemyMove : MonoBehaviour
             {
             ButtonRetryLevel.SetActive(true);
             }
-
+            transform.position = new Vector3(-3, -3, 0);
         }
 
-           if(winwindow == true && protawin == true)
-            {
-                enemywin = false;
-                print("YOU WIN");
+           if(winwindow == true && protaclick == true)
+           {
+            enemywin = false;
+            print("YOU WIN");
+            transform.position = new Vector3(-3, -3, 0);
+
             timerdelbotonfinal -= Time.deltaTime;
             if (timerdelbotonfinal < 0)
             {
-                ButtonNextLevel.SetActive(true);
-            }
+            ButtonNextLevel.SetActive(true);
             }
 
+           }
+            
         contadordeframes.text = drawtime.ToString("F2");
 
 
 
     }
-
+    
 }

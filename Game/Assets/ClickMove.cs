@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class ClickMove : MonoBehaviour
@@ -11,7 +12,7 @@ public class ClickMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        EnemyMove.protawin = false;
+        EnemyMove.protaclick = false;
     }
 
     // Update is called once per frame
@@ -19,17 +20,20 @@ public class ClickMove : MonoBehaviour
     {
        
 
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Space) && EnemyMove.winwindow == true)
         {
-            transform.position = new Vector3(0, 0, 0);
-           EnemyMove.protawin = true;
+            transform.position = new Vector3(0, -3, 0);
+            EnemyMove.protaclick = true;
         }
-
+        
+        /*
         if (EnemyMove.protawin == true && EnemyMove.winwindow == false)
         {
             EnemyMove.protawin = false;
             print("TOO SOON");
+           
         }
+        */
 
     }
 }
