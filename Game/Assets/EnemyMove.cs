@@ -23,6 +23,12 @@ public class EnemyMove : MonoBehaviour
     public GameObject ButtonRetryLevel;
     public GameObject fadein;
     public GameObject fadeout;
+    public GameObject ProtaIdle;
+    public GameObject ProtaAttack;
+    public GameObject ProtaStun;
+    public GameObject EnemyIdle;
+    public GameObject EnemyAttack;
+    public GameObject EnemyStun;
     public TMP_Text contadordeframes;
     public float timerdelbotonfinal;
 
@@ -58,15 +64,22 @@ public class EnemyMove : MonoBehaviour
         {
             print("TOO SOON");
             protaclick = false;
-            
+            enemywin = true;
         }
 
-        if (timerunning == false)
+        if (timerunning == false && enemywin == false)
         {
             draw();
         }
 
-
+        if (enemywin == true)
+        {
+            timerdelbotonfinal -= Time.deltaTime;
+            if (timerdelbotonfinal < 0)
+            {
+                ButtonRetryLevel.SetActive(true);
+            }
+        }
     }
         public void  draw()
     {
@@ -93,23 +106,33 @@ public class EnemyMove : MonoBehaviour
         
         if (enemywin == true)
         {
-                print("YOU LOSE");
-                winwindow = false;
+          print("YOU LOSE");
+          winwindow = false;
+
+            ProtaIdle.SetActive(false);
+            ProtaStun.SetActive(true);
+            EnemyIdle.SetActive(false);
+            EnemyAttack.SetActive(true);
 
             timerdelbotonfinal -= Time.deltaTime;
             if (timerdelbotonfinal < 0)
             {
-            ButtonRetryLevel.SetActive(true);
+                ButtonRetryLevel.SetActive(true);
+                timerdelbotonfinal -= Time.deltaTime;
             }
-            transform.position = new Vector3(-3, -3, 0);
+            
         }
 
            if(winwindow == true && protaclick == true)
            {
             enemywin = false;
             print("YOU WIN");
-            transform.position = new Vector3(-3, -3, 0);
-
+            
+            
+            ProtaIdle.SetActive(false);
+            ProtaAttack.SetActive(true);
+            EnemyIdle.SetActive(false);
+            EnemyStun.SetActive(true);
             timerdelbotonfinal -= Time.deltaTime;
             if (timerdelbotonfinal < 0)
             {
