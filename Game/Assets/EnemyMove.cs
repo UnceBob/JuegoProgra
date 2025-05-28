@@ -15,14 +15,15 @@ public class EnemyMove : MonoBehaviour
    public static bool enemywin;
     public static bool winwindow;
     public float timer;
+    public float RandomRangeA;
+    public float RandomRangeB;
     public float drawtime;
     private bool drawtimerunning;
     private bool timerunning = true;
     public GameObject signal;
+    public GameObject FLASH;
     public GameObject ButtonNextLevel;
     public GameObject ButtonRetryLevel;
-    public GameObject fadein;
-    public GameObject fadeout;
     public GameObject ProtaIdle;
     public GameObject ProtaAttack;
     public GameObject ProtaStun;
@@ -37,10 +38,9 @@ public class EnemyMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timer = Random.Range(2f, 5f);
+        timer = Random.Range(RandomRangeA , RandomRangeB);
         enemywin = false;
         
-        fadein.SetActive(true);
         
     }
 
@@ -78,6 +78,7 @@ public class EnemyMove : MonoBehaviour
             if (timerdelbotonfinal < 0)
             {
                 ButtonRetryLevel.SetActive(true);
+               
             }
         }
     }
@@ -114,6 +115,9 @@ public class EnemyMove : MonoBehaviour
             EnemyIdle.SetActive(false);
             EnemyAttack.SetActive(true);
 
+            signal.SetActive(false);
+
+
             timerdelbotonfinal -= Time.deltaTime;
             if (timerdelbotonfinal < 0)
             {
@@ -133,6 +137,10 @@ public class EnemyMove : MonoBehaviour
             ProtaAttack.SetActive(true);
             EnemyIdle.SetActive(false);
             EnemyStun.SetActive(true);
+
+            signal.SetActive(false);
+
+
             timerdelbotonfinal -= Time.deltaTime;
             if (timerdelbotonfinal < 0)
             {
