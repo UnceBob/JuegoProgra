@@ -22,7 +22,7 @@ public class ClickMove : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
-            
+            EnemyMove.toosoon = true;
             EnemyMove.protaclick = true;
         }
         

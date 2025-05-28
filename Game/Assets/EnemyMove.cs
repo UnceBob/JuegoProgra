@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.WSA;
+
 using UnityEngine.UI;
 using TMPro;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -13,6 +13,7 @@ public class EnemyMove : MonoBehaviour
 
    public static bool protaclick;
    public static bool enemywin;
+   public static bool toosoon;
     public static bool winwindow;
     public float timer;
     public float RandomRangeA;
@@ -20,6 +21,7 @@ public class EnemyMove : MonoBehaviour
     public float drawtime;
     private bool drawtimerunning;
     private bool timerunning = true;
+   
     public GameObject signal;
     public GameObject FLASH;
     public GameObject ButtonNextLevel;
@@ -40,7 +42,7 @@ public class EnemyMove : MonoBehaviour
     {
         timer = Random.Range(RandomRangeA , RandomRangeB);
         enemywin = false;
-        
+        toosoon = false;
 
         
     }
@@ -54,18 +56,27 @@ public class EnemyMove : MonoBehaviour
             timer -= Time.deltaTime;
             
         }
-        else
+
+        else if (timer < 0 && toosoon == false)
         {
            
             timerunning = false;
-            transform.localScale = new Vector3(3,3,3);
+            
             signal.SetActive(true);
+            FLASH.SetActive(true);
         }
         if (protaclick == true && winwindow == false)
         {
             print("TOO SOON");
             protaclick = false;
             enemywin = true;
+
+            ProtaIdle.SetActive(false);
+            ProtaStun.SetActive(true);
+            EnemyIdle.SetActive(false);
+            EnemyAttack.SetActive(true);
+
+            signal.SetActive(false);
         }
 
         if (timerunning == false && enemywin == false)
@@ -91,6 +102,7 @@ public class EnemyMove : MonoBehaviour
             drawtime -= Time.deltaTime;
             print("AHORA");
             winwindow = true;
+            
         }
         else
         {
