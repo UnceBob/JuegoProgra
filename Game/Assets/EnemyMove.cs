@@ -41,6 +41,7 @@ public class EnemyMove : MonoBehaviour
         timer = Random.Range(RandomRangeA , RandomRangeB);
         enemywin = false;
         
+
         
     }
 
