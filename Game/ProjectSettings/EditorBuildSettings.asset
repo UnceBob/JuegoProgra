@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/levelselect.unity
     guid: 0a83c46e86068aa449b7bd818f6b82eb
   - enabled: 1
+    path: Assets/Scenes/creditos.unity
+    guid: b02e2e35cc86d8640a9c17531d5faadd
+  - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: c76dd7c748f603641b71f65bb8c976a7
   - enabled: 1
@@ -21,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level3.unity
     guid: 3dc09fa3713e0b346a4e85a6b1037298
   - enabled: 1
-    path: Assets/Scenes/creditos.unity
-    guid: b02e2e35cc86d8640a9c17531d5faadd
+    path: Assets/Scenes/MainMenuAlt.unity
+    guid: 81fd6fe2fd8a26a46a61dd841d22d44c
+  - enabled: 1
+    path: Assets/Scenes/CraditosAlt.unity
+    guid: 8adba5d9a8ce346479f7bd4da7d2501e
   m_configObjects: {}

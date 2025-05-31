@@ -24,6 +24,7 @@ public class EnemyMove : MonoBehaviour
    
     public GameObject signal;
     public GameObject FLASH;
+    public GameObject Strike;
     public GameObject ButtonNextLevel;
     public GameObject ButtonRetryLevel;
     public GameObject ProtaIdle;
@@ -32,7 +33,12 @@ public class EnemyMove : MonoBehaviour
     public GameObject EnemyIdle;
     public GameObject EnemyAttack;
     public GameObject EnemyStun;
-    public TMP_Text contadordeframes;
+
+    public GameObject TUTO;
+    public GameObject LetreroTOOSOON;
+    public GameObject LetreroYOUWIN;
+    public GameObject LetreroYOULOSE;
+
     public float timerdelbotonfinal;
 
     bool duelActive;
@@ -43,8 +49,21 @@ public class EnemyMove : MonoBehaviour
         timer = Random.Range(RandomRangeA , RandomRangeB);
         enemywin = false;
         toosoon = false;
+        Strike.SetActive(false);
 
-        
+        print(winwindow);
+        print(protaclick);
+        print(timerunning);
+        print(enemywin);
+        print(drawtimerunning);
+
+        //tru tru tru fal fal
+        winwindow = false;
+        protaclick = false;
+        timerunning = true;
+        enemywin = false;
+        drawtimerunning = true;
+
     }
 
     // Update is called once per frame
@@ -57,7 +76,7 @@ public class EnemyMove : MonoBehaviour
             
         }
 
-        else if (timer < 0 && toosoon == false)
+        else if (timer <= 0 && toosoon == false)
         {
            
             timerunning = false;
@@ -70,12 +89,15 @@ public class EnemyMove : MonoBehaviour
             print("TOO SOON");
             protaclick = false;
             enemywin = true;
+            Strike.SetActive(true);
 
             ProtaIdle.SetActive(false);
             ProtaStun.SetActive(true);
             EnemyIdle.SetActive(false);
             EnemyAttack.SetActive(true);
 
+            TUTO.SetActive(false);
+            LetreroTOOSOON.SetActive(true);
             signal.SetActive(false);
         }
 
@@ -122,12 +144,16 @@ public class EnemyMove : MonoBehaviour
         {
           print("YOU LOSE");
           winwindow = false;
+            Strike.SetActive(true);
 
             ProtaIdle.SetActive(false);
             ProtaStun.SetActive(true);
             EnemyIdle.SetActive(false);
             EnemyAttack.SetActive(true);
 
+            TUTO.SetActive(false);
+
+            LetreroYOULOSE.SetActive(true);
             signal.SetActive(false);
 
 
@@ -146,12 +172,17 @@ public class EnemyMove : MonoBehaviour
             print("YOU WIN");
             
             
+            Strike.SetActive(true);
+      
             ProtaIdle.SetActive(false);
             ProtaAttack.SetActive(true);
             EnemyIdle.SetActive(false);
             EnemyStun.SetActive(true);
 
+            TUTO.SetActive(false);
+
             signal.SetActive(false);
+            LetreroYOUWIN.SetActive(true);
 
 
             timerdelbotonfinal -= Time.deltaTime;
@@ -162,7 +193,7 @@ public class EnemyMove : MonoBehaviour
 
            }
             
-        contadordeframes.text = drawtime.ToString("F2");
+        
 
 
 
